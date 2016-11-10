@@ -31,6 +31,27 @@ namespace Pizzeria.Tests.CurtissmioPies
         }
 
         [Test]
+        public void AllGreenPizzasIncreaseMixTimeByThreeMinutes()
+        {
+            Dough[] doughs = new Dough[]
+            {
+                new ThinDough(),
+                new PanDough(),
+                new HandTossedDough()
+            };
+
+            foreach(Dough dough in doughs)
+            {
+                int originalMixTime = dough.MixTime;
+
+                dough.ColorGreen();
+                int newMixTime = dough.MixTime;
+
+                Assert.That(newMixTime, Is.EqualTo(originalMixTime + 3));
+            }
+        }
+
+        [Test]
         public void ThinPizzaWithNormalCrustReportsCorrectTimes()
         {
             Dough dough = new ThinDough();

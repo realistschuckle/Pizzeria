@@ -29,9 +29,7 @@ namespace Pizzeria.Tests.ProceduralPies
         [TestCase(5, 30, 30, "cinnamon", 10, 20, 20, 50)]
         public void TestDoughTimes(int mix, int firstRise, int secondRise, string flour, int expectedMix, int expectedFirstRise, int expectedSecondRise, int expectedTotalTime)
         {
-            Dough dough = new Dough();
-
-            int totalTime = dough.CalculateTotalPreparationTime(mix, firstRise, secondRise, flour);
+            int totalTime = DoughCalculations.CalculateTotalPreparationTime(mix, firstRise, secondRise, flour);
 
             Assert.That(totalTime, Is.EqualTo(expectedTotalTime));
         }

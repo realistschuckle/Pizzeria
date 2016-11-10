@@ -2,9 +2,9 @@
 
 namespace Pizzeria.ProceduralPies
 {
-    public class Dough
+    public static class DoughCalculations
     {
-        public int CalculateTotalPreparationTime(int mixTime, int firstRiseTime, int secondRiseTime, string flourType)
+        public static int CalculateTotalPreparationTime(int mixTime, int firstRiseTime, int secondRiseTime, string flourType)
         {
             if (flourType == "wheat")
             {

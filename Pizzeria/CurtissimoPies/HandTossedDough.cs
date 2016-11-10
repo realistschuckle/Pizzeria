@@ -1,14 +1,7 @@
-﻿using System;
-
-namespace Pizzeria.CurtissimoPies
+﻿namespace Pizzeria.CurtissimoPies
 {
     public class HandTossedDough : Dough
     {
-        public override int MixTime
-        {
-            get { return 5; }
-        }
-
         public override int FirstRiseTime
         {
             get { return 30; }
@@ -17,6 +10,11 @@ namespace Pizzeria.CurtissimoPies
         public override int SecondRiseTime
         {
             get { return 30; }
+        }
+
+        protected override int ChildMixTime
+        {
+            get { return 5; }
         }
     }
 }

@@ -27,24 +27,24 @@ namespace Pizzeria.GenericPies
             }
         }
 
-        public int MixTime()
+        public int MixTime
         {
-            return _mixTime;
+            get { return _mixTime; }
         }
 
-        public int FirstRiseTime()
+        public int FirstRiseTime
         {
-            return _firstRiseTime;
+            get { return _firstRiseTime; }
         }
 
-        public int SecondRiseTime()
+        public int SecondRiseTime
         {
-            return _secondRiseTime;
+            get { return _secondRiseTime; }
         }
 
-        public int TotalPreparationTime()
+        public int TotalPreparationTime
         {
-            return _mixTime + _firstRiseTime + _secondRiseTime;
+            get { return _mixTime + _firstRiseTime + _secondRiseTime; }
         }
     }
 }

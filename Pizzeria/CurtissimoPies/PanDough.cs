@@ -7,14 +7,14 @@
             get { return 40; }
         }
 
-        public override int MixTime
-        {
-            get { return 8; }
-        }
-
         public override int SecondRiseTime
         {
             get { return 40; }
+        }
+
+        protected override int ChildMixTime
+        {
+            get { return 8; }
         }
     }
 }
