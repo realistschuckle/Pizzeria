@@ -40,10 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CurtissimoPies\CinnamonDough.cs" />
     <Compile Include="CurtissimoPies\Dough.cs" />
     <Compile Include="CurtissimoPies\HandTossedDough.cs" />
+    <Compile Include="CurtissimoPies\IDough.cs" />
     <Compile Include="CurtissimoPies\PanDough.cs" />
     <Compile Include="CurtissimoPies\ThinDough.cs" />
+    <Compile Include="CurtissimoPies\WheatDough.cs" />
     <Compile Include="GenericPies\Dough.cs" />
     <Compile Include="ProceduralPies\Dough.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,6 +1,6 @@
 ﻿namespace Pizzeria.CurtissimoPies
 {
-    public abstract class Dough
+    public abstract class Dough : IDough
     {
         private int _additionalMixTime;
 
@@ -14,8 +14,6 @@
             get { return _additionalMixTime + ChildMixTime; }
         }
 
-        protected abstract int ChildMixTime { get; }
-
         public abstract int FirstRiseTime { get; }
 
         public abstract int SecondRiseTime { get; }
@@ -24,5 +22,7 @@
         {
             _additionalMixTime = 3;
         }
+
+        protected abstract int ChildMixTime { get; }
     }
 }

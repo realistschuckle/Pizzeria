@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using Pizzeria.CurtissimoPies;
+using System;
 
 namespace Pizzeria.Tests.CurtissmioPies
 {
@@ -18,6 +19,78 @@ namespace Pizzeria.Tests.CurtissmioPies
         //
         // If a crust is made with cinnamon, add 5 minutes to the mix time and
         // subtract 10 minutes from both rises.
+
+        [Test]
+        public void WheatDoughAddsTwoMinutesToTheMixTimeAndAddsFiveMinutesToTheFirstRiseTimesOfTheRealDough()
+        {
+            Dough[] doughs = new Dough[]
+            {
+                new ThinDough(),
+                new PanDough(),
+                new HandTossedDough()
+            };
+
+            foreach (Dough dough in doughs)
+            {
+                int oldMixTime = dough.MixTime;
+                int oldFirstRiseTime = dough.FirstRiseTime;
+                int oldSecondRiseTime = dough.SecondRiseTime;
+
+                int expectedMixTime = oldMixTime + 2;
+                int expectedFirstRiseTime = oldFirstRiseTime + 5;
+                int expectedSecondRiseTime = oldSecondRiseTime;
+                int expectedTotalTime = expectedMixTime + expectedFirstRiseTime + expectedSecondRiseTime;
+
+                IDough fancyDough = new WheatDough(dough);
+                int newMixTime = fancyDough.MixTime;
+                int newFirstRiseTime = fancyDough.FirstRiseTime;
+                int newSecondRiseTime = fancyDough.SecondRiseTime;
+                int newTotalTime = fancyDough.TotalPreparationTime;
+
+                Assert.That(newMixTime, Is.EqualTo(expectedMixTime));
+                Assert.That(newFirstRiseTime, Is.EqualTo(expectedFirstRiseTime));
+                Assert.That(newSecondRiseTime, Is.EqualTo(expectedSecondRiseTime));
+                Assert.That(newFirstRiseTime, Is.GreaterThanOrEqualTo(0));
+                Assert.That(newSecondRiseTime, Is.GreaterThanOrEqualTo(0));
+                Assert.That(newTotalTime, Is.EqualTo(expectedTotalTime));
+            }
+        }
+
+        [Test]
+        public void CinnamonDoughAddsFiveMinutesToTheMixTimeAndSubtracts10MinutesFromTheRiseTimesOfTheRealDough()
+        {
+            Dough[] doughs = new Dough[]
+            {
+                new ThinDough(),
+                new PanDough(),
+                new HandTossedDough()
+            };
+
+            foreach (Dough dough in doughs)
+            {
+                int oldMixTime = dough.MixTime;
+                int oldFirstRiseTime = dough.FirstRiseTime;
+                int oldSecondRiseTime = dough.SecondRiseTime;
+
+                int expectedMixTime = oldMixTime + 5;
+                int expectedFirstRiseTime = Math.Max(oldFirstRiseTime - 10, 0);
+                int expectedSecondRiseTime = Math.Max(oldSecondRiseTime - 10, 0);
+                int expectedTotalTime = expectedMixTime + expectedFirstRiseTime + expectedSecondRiseTime;
+
+                IDough fancyDough = new CinnamonDough(dough);
+                int newMixTime = fancyDough.MixTime;
+                int newFirstRiseTime = fancyDough.FirstRiseTime;
+                int newSecondRiseTime = fancyDough.SecondRiseTime;
+                int newTotalTime = fancyDough.TotalPreparationTime;
+
+                Assert.That(newMixTime, Is.EqualTo(expectedMixTime));
+                Assert.That(newFirstRiseTime, Is.EqualTo(expectedFirstRiseTime));
+                Assert.That(newSecondRiseTime, Is.EqualTo(expectedSecondRiseTime));
+                Assert.That(newFirstRiseTime, Is.GreaterThanOrEqualTo(0));
+                Assert.That(newSecondRiseTime, Is.GreaterThanOrEqualTo(0));
+                Assert.That(newTotalTime, Is.EqualTo(expectedTotalTime));
+            }
+        }
 
         [Test]
         public void HandTossedPizzaWithNormalCrustReportsCorrectTimes()
